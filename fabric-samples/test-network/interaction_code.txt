@@ -24,22 +24,22 @@ peer lifecycle chaincode package property.tar.gz --path ../chaincode/property-ap
  or 
  peer lifecycle chaincode install property.tar.gz --peerAddresses localhost:7051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
-response :identifier: property_1:886b2cf75233ea2c5a11d55394dc70b7800e7589bc45185ad91b185b98f6fb2b
+response :identifier: property_1:dac72f2270d789c6b4e75b69aae4b2c8ab9a7e6f6d83f202213d03430755400a
 
 // install package on org2
  peer lifecycle chaincode install property.tar.gz --peerAddresses localhost:9051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
- reponse : identifier: property_1:886b2cf75233ea2c5a11d55394dc70b7800e7589bc45185ad91b185b98f6fb2b
+ reponse : identifier: property_1:dac72f2270d789c6b4e75b69aae4b2c8ab9a7e6f6d83f202213d03430755400a
 
 //query the package
 
 peer lifecycle chaincode queryinstalled --peerAddresses localhost:7051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE   // or org1
 
-//get an isntall package from peer
-peer lifecycle chaincode getinstalledpackage --package-id property_1:886b2cf75233ea2c5a11d55394dc70b7800e7589bc45185ad91b185b98f6fb2b --output-directory . --peerAddresses localhost:9051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
+//get an install package from peer
+peer lifecycle chaincode getinstalledpackage --package-id property_1:dac72f2270d789c6b4e75b69aae4b2c8ab9a7e6f6d83f202213d03430755400a --output-directory . --peerAddresses localhost:9051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
-// approve chaincode 
-peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA --channelID testchannel --name property --version 1.0 --package-id property_1:886b2cf75233ea2c5a11d55394dc70b7800e7589bc45185ad91b185b98f6fb2b --sequence 1
+// approve chaincode -- kollaei edw 
+peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA --channelID testchannel1 --name property --version 1.0 --package-id property_1:dac72f2270d789c6b4e75b69aae4b2c8ab9a7e6f6d83f202213d03430755400a --sequence 1
 
 //get if i can commit chaincode
 peer lifecycle chaincode checkcommitreadiness -o localhost:7050 --channelID testchannel --name property --version 1.0 --sequence 1 --output json
